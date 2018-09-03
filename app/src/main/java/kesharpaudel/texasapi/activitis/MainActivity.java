@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             mPassword.requestFocus();
             return;
         }
-        if (password.length() < 6) {
+        if (password.length() <2) {
             mPassword.setError("Password should be at least 6 character long.");
             mPassword.requestFocus();
             return;

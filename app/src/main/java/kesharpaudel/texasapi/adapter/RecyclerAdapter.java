@@ -12,9 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import kesharpaudel.texasapi.R;
 import kesharpaudel.texasapi.activitis.SingleUserDetail;
 import kesharpaudel.texasapi.activitis.UserDetail;
@@ -40,7 +42,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.display_user, parent, false);
+                .inflate(R.layout.user_display, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(view, context);
 
         return myViewHolder;
@@ -60,8 +62,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         holder.Email.setText(data.get(position).getEmail());*/
 
         if (data.get(position).getProfilepicture().length() > 0) {
-            Glide.with(context).load(data.get(position).getProfilepicture())
-                    .into(holder.ProfilePicture);
+            /*Glide.with(context).load(data.get(position).getProfilepicture())
+                    .into(holder.ProfilePicture);*/
+            Picasso.get().load((data.get(position).getProfilepicture())).placeholder(R.drawable.pic).into(holder.ProfilePicture);
         } else {
             holder.ProfilePicture.setImageResource(R.drawable.pic);
             //Glide.with(context).load(R.drawable.pic).into(holder.ProfilePicture);
@@ -80,7 +83,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView ProfilePicture;
+        CircleImageView ProfilePicture;
         TextView Username, Firstname, Lastname, Email;
         Context context;
 
@@ -94,7 +97,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             Firstname = itemView.findViewById(R.id.fn);
             Lastname = itemView.findViewById(R.id.ln);
             Username = itemView.findViewById(R.id.username);
-            Email = itemView.findViewById(R.id.email);
+            //Email = itemView.findViewById(R.id.email);
 
             this.context = context;
 
@@ -110,13 +113,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             firstname = data.getFirstName();
             lastname = data.getLastName();
             username = data.getUsername();
-            email = data.getEmail();
+            //email = data.getEmail();
 
 
             Firstname.setText(firstname);
             Lastname.setText(lastname);
             Username.setText(username);
-            Email.setText(email);
+            //Email.setText(email);
 
 
         }

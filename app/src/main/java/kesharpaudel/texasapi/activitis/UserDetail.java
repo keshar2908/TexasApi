@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -50,7 +51,7 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
 
 
 
-        layoutManager=new GridLayoutManager(this,2);
+        layoutManager=new LinearLayoutManager(this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -62,6 +63,9 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         showUserDetail();
+
+        NavigationView navigationView=findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
 
 
