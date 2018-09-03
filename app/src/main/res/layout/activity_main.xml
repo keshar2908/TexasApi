@@ -62,7 +62,9 @@
             android:layout_gravity="center"
             android:background="@drawable/edit_text"
             android:gravity="center"
-            android:text="@string/login" />
+            android:text="@string/login"
+            android:textColor="@color/colorPrimary"
+            />
 
 
     </LinearLayout>

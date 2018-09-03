@@ -28,7 +28,7 @@
             android:id="@+id/username"
             android:textSize="20sp"
             android:padding="8dp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/username"
             />
         <TextView
             android:layout_width="match_parent"
