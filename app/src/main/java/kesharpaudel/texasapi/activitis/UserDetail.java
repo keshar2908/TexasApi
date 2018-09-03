@@ -1,5 +1,7 @@
 package kesharpaudel.texasapi.activitis;
 
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UserDetail extends AppCompatActivity {
+public class UserDetail extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -104,5 +106,34 @@ public class UserDetail extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        int id=item.getItemId();
+
+        if(id==R.id.counselling){
+            Toast.makeText(this, "For counselling", Toast.LENGTH_SHORT).show();
+        }
+        if(id==R.id.notification){
+            Toast.makeText(this, "For Notification", Toast.LENGTH_SHORT).show();
+        }
+        if(id==R.id.team){
+            Toast.makeText(this, "For Team", Toast.LENGTH_SHORT).show();
+        }
+        if(id==R.id.course){
+            Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
+        }
+        if(id==R.id.student){
+            Toast.makeText(this, "For Student", Toast.LENGTH_SHORT).show();
+        }
+        if(id==R.id.teacher){
+            Toast.makeText(this, "For Teacher", Toast.LENGTH_SHORT).show();
+        }
+        if(id==R.id.routine){
+            Toast.makeText(this, "For Routine", Toast.LENGTH_SHORT).show();
+        }
+        return false;
     }
 }
