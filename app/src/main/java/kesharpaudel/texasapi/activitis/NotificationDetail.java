@@ -1,5 +1,9 @@
 package kesharpaudel.texasapi.activitis;
 
+import android.content.Intent;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -23,17 +27,34 @@ public class NotificationDetail extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     String token;
     long loginId,customerId;
+    DrawerLayout mDrawerLayout;
+    ActionBarDrawerToggle mToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.notify_recycle);
-        recyclerView = findViewById(R.id.nRViewID);
+        setContentView(R.layout.activity_user_detail);
+        recyclerView = findViewById(R.id.recyclerview);
 
 
-        token = "86D1gNbiYvwGatQe6KuvY3mLpfl1BNQPcQSck7BKA16bKwFQEm";
-        loginId = 921;
-        customerId = 1;
+
+        mDrawerLayout=findViewById(R.id.drawerlayout);
+        mToggle=new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        NavigationView navigationView=findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) NotificationDetail.this);
+
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        Intent intent =getIntent();
+        token = intent.getExtras().getString("token");
+        loginId = intent.getExtras().getLong("loginId");
+        customerId = intent.getExtras().getLong("customerId");
 
         layoutManager=new LinearLayoutManager(this);
         recyclerView.setHasFixedSize(true);
