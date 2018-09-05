@@ -14,7 +14,7 @@ public class SingleUserDetail extends AppCompatActivity {
 
     private ImageView ProfilePicture;
     private TextView Username,Firstname,Lastname,Email,Createby;
-    private TextView CreatedDate,MobileNo;
+    //private TextView CreatedDate,MobileNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +23,12 @@ public class SingleUserDetail extends AppCompatActivity {
 
         ProfilePicture=findViewById(R.id.profilepicture);
         Username=findViewById(R.id.username);
-        Firstname=findViewById(R.id.firstname);
-        Lastname=findViewById(R.id.lastname);
+        Firstname=findViewById(R.id.fn);
+        Lastname=findViewById(R.id.ln);
         Email=findViewById(R.id.email);
-        Createby=findViewById(R.id.createdby);
-        CreatedDate=findViewById(R.id.creatededate);
-        MobileNo=findViewById(R.id.mobileno);
+        //Createby=findViewById(R.id.createdby);
+        //CreatedDate=findViewById(R.id.creatededate);
+        //MobileNo=findViewById(R.id.mobileno);
 
 
         String pp=getIntent().getStringExtra("profilepicture");
@@ -49,8 +49,8 @@ public class SingleUserDetail extends AppCompatActivity {
         Lastname.setText(getIntent().getStringExtra("lastname"));
         Email.setText(getIntent().getStringExtra("email"));
         Createby.setText(getIntent().getStringExtra("createdby"));
-        CreatedDate.setText(getIntent().getStringExtra("createddate"));
-        MobileNo.setText(getIntent().getStringExtra("mobileno"));
+        //CreatedDate.setText(getIntent().getStringExtra("createddate"));
+        //MobileNo.setText(getIntent().getStringExtra("mobileno"));
 
     }
 }

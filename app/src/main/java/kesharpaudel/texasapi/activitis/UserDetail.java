@@ -1,5 +1,6 @@
 package kesharpaudel.texasapi.activitis;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -121,7 +122,11 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
             Toast.makeText(this, "For counselling", Toast.LENGTH_SHORT).show();
         }
         if(id==R.id.notification){
-            Toast.makeText(this, "For Notification", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "For Notification", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(this, NotificationDetail.class);
+            startActivity(intent);
+
         }
         if(id==R.id.team){
             Toast.makeText(this, "For Team", Toast.LENGTH_SHORT).show();
