@@ -13,7 +13,8 @@ import kesharpaudel.texasapi.R;
 public class SingleUserDetail extends AppCompatActivity {
 
     private ImageView ProfilePicture;
-    private TextView Username,Firstname,Lastname,Email;
+    private TextView Username,Firstname,Lastname,Email,Createby;
+    private TextView CreatedDate,MobileNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,17 +23,34 @@ public class SingleUserDetail extends AppCompatActivity {
 
         ProfilePicture=findViewById(R.id.profilepicture);
         Username=findViewById(R.id.username);
-        Firstname=findViewById(R.id.fn);
-        Lastname=findViewById(R.id.ln);
+        Firstname=findViewById(R.id.firstname);
+        Lastname=findViewById(R.id.lastname);
         Email=findViewById(R.id.email);
+        Createby=findViewById(R.id.createdby);
+        CreatedDate=findViewById(R.id.creatededate);
+        MobileNo=findViewById(R.id.mobileno);
 
-        Glide.with(this).load(getIntent()
+
+        String pp=getIntent().getStringExtra("profilepicture");
+        if(pp.length()>0){
+            Glide.with(this).load(getIntent()
+                    .getStringExtra("profilepicture"))
+                    .into(ProfilePicture);
+
+        }else {
+            Glide.with(this).load(R.drawable.pic).into(ProfilePicture);
+        }
+
+        /*Glide.with(this).load(getIntent()
                 .getStringExtra("profilepicture"))
-                .into(ProfilePicture);
+                .into(ProfilePicture);*/
         Username.setText(getIntent().getStringExtra("username"));
         Firstname.setText(getIntent().getStringExtra("firstname"));
         Lastname.setText(getIntent().getStringExtra("lastname"));
         Email.setText(getIntent().getStringExtra("email"));
+        Createby.setText(getIntent().getStringExtra("createdby"));
+        CreatedDate.setText(getIntent().getStringExtra("createddate"));
+        MobileNo.setText(getIntent().getStringExtra("mobileno"));
 
     }
 }
