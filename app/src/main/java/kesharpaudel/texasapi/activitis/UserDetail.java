@@ -17,6 +17,7 @@ import kesharpaudel.texasapi.R;
 import kesharpaudel.texasapi.adapter.RecyclerAdapter;
 import kesharpaudel.texasapi.api.RetrofitClient;
 import kesharpaudel.texasapi.models.ListDto;
+import kesharpaudel.texasapi.models.Notification;
 import kesharpaudel.texasapi.models.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -123,6 +124,11 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
         }
         if(id==R.id.notification){
             Toast.makeText(this, "For Notification", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(UserDetail.this, NotificationDetail.class);
+            intent.putExtra("loginid",loginId);
+            intent.putExtra("token",token);
+            intent.putExtra("customerid",customerId);
+            startActivity(intent);
         }
         if(id==R.id.team){
             Toast.makeText(this, "For Team", Toast.LENGTH_SHORT).show();
