@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/counselling"
-        android:icon="@drawable/counseling"
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/counselling"
+            android:icon="@drawable/counseling"
 
-        android:title="Counselling"/>
+            android:title="Counselling"/>
 
 
-    <item android:id="@+id/notification"
-        android:icon="@drawable/notification"
-        android:title="Notification"/>
-    <item android:id="@+id/team"
-        android:icon="@drawable/group"
-        android:title="Team"/>
-    <item android:id="@+id/user"
-        android:icon="@drawable/user"
-        android:title="User"/>
-    <item android:id="@+id/course"
-        android:icon="@drawable/course"
-        android:title="Course"/>
-    <item android:id="@+id/student"
-        android:icon="@drawable/student1"
-        android:title="Student"/>
-    <item android:id="@+id/teacher"
-        android:icon="@drawable/professor"
-        android:title="Teacher"/>
+        <item android:id="@+id/notification"
+            android:icon="@drawable/notification"
+            android:title="Notification"/>
+        <item android:id="@+id/team"
+            android:icon="@drawable/group"
+            android:title="Team"/>
+        <item android:id="@+id/user"
+            android:icon="@drawable/user"
+            android:title="User"/>
+        <item android:id="@+id/course"
+            android:icon="@drawable/course"
+            android:title="Course"/>
+        <item android:id="@+id/student"
+            android:icon="@drawable/student1"
+            android:title="Student"/>
+        <item android:id="@+id/teacher"
+            android:icon="@drawable/professor"
+            android:title="Teacher"/>
 
-    <item android:id="@+id/routine"
-        android:icon="@drawable/routine"
-        android:title="Routine"/>
+        <item android:id="@+id/routine"
+            android:icon="@drawable/routine"
+            android:title="Routine"/>
+    </group>
+
+
 
 
 

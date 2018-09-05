@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -49,26 +50,39 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
 
 
         holder.bindView(data.get(position));
-        //String profilepicture=data.getProfilepicture();
-        //Glide.with(context).asBitmap().load(profilepicture).into(holder.ProfilePicture);
 
-        /*holder.Username.setText(data.get(position).getUsername());
-        holder.Firstname.setText(data.get(position).getFirstName());
-        holder.Lastname.setText(data.get(position).getLastName());
-        holder.Email.setText(data.get(position).getEmail());*/
 
         if (data.get(position).getProfilepicture().length() > 0) {
             /*Glide.with(context).load(data.get(position).getProfilepicture())
                     .into(holder.ProfilePicture);*/
             Picasso.get().load((data.get(position).getProfilepicture())).placeholder(R.drawable.pic).into(holder.ProfilePicture);
         } else {
-            holder.ProfilePicture.setImageResource(R.drawable.pic);
-            //Glide.with(context).load(R.drawable.pic).into(holder.ProfilePicture);
+            Picasso.get().load(R.drawable.pic).into(holder.ProfilePicture);
+
+
         }
+        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new Intent(context,SingleUserDetail.class);
+
+                intent.putExtra("profilepicture",data.get(position).getProfilepicture());
+                intent.putExtra("username",data.get(position).getUsername());
+                intent.putExtra("firstname",data.get(position).getFirstName());
+                intent.putExtra("lastname",data.get(position).getLastName());
+                intent.putExtra("email",data.get(position).getEmail());
+                intent.putExtra("createdby",data.get(position).getCreatedby());
+                intent.putExtra("createddate",data.get(position).getCreatedDate());
+                intent.putExtra("mobileno",data.get(position).getMobileNo());
+
+                context.startActivity(intent);
+            }
+        });
 
 
 
@@ -84,8 +98,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         CircleImageView ProfilePicture;
-        TextView Username, Firstname, Lastname, Email;
+        TextView Username, Firstname, Lastname;
         Context context;
+        RelativeLayout relativeLayout;
 
 
 
@@ -97,6 +112,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             Firstname = itemView.findViewById(R.id.fn);
             Lastname = itemView.findViewById(R.id.ln);
             Username = itemView.findViewById(R.id.username);
+            relativeLayout=itemView.findViewById(R.id.relativelayout);
             //Email = itemView.findViewById(R.id.email);
 
             this.context = context;
@@ -107,7 +123,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         public void bindView(Data data) {
 
 
-            String firstname, lastname, username, email;
+            String firstname, lastname, username;
 
 
             firstname = data.getFirstName();
@@ -119,10 +135,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             Firstname.setText(firstname);
             Lastname.setText(lastname);
             Username.setText(username);
-            //Email.setText(email);
 
-
-        }
+            }
 
 
     }

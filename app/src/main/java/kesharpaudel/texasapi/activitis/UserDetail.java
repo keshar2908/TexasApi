@@ -1,5 +1,6 @@
 package kesharpaudel.texasapi.activitis;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -115,29 +116,67 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        int id=item.getItemId();
+        switch (item.getItemId()){
+            case R.id.counselling:{
+                Toast.makeText(this, "For counselling", Toast.LENGTH_SHORT).show();
+                getSupportActionBar().setTitle("Counselling");
+                item.setChecked(true);
+                mDrawerLayout.closeDrawers();
+            }
+                break;
+            case R.id.notification:{
+                Toast.makeText(this, "For Notification", Toast.LENGTH_SHORT).show();
+                getSupportActionBar().setTitle("Notification");
+                item.setChecked(true);
+                mDrawerLayout.closeDrawers();
+            }
+            break;
+            case R.id.team:{
+                Toast.makeText(this, "For Team", Toast.LENGTH_SHORT).show();
+                getSupportActionBar().setTitle("Team");
+                item.setChecked(true);
+                mDrawerLayout.closeDrawers();
+            }
+            break;
+            case R.id.user:{
+                Toast.makeText(this, "For User", Toast.LENGTH_SHORT).show();
+                getSupportActionBar().setTitle("User");
+                item.setChecked(true);
+                mDrawerLayout.closeDrawers();
+            }
+            break;
+            case R.id.course:{
+                Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
+                getSupportActionBar().setTitle("Course");
+                item.setChecked(true);
+                mDrawerLayout.closeDrawers();
+            }
+            break;
+            case R.id.student:{
+                Toast.makeText(this, "For Student", Toast.LENGTH_SHORT).show();
+                getSupportActionBar().setTitle("Student");
+                item.setChecked(true);
+                mDrawerLayout.closeDrawers();
+            }
+            break;
+            case R.id.teacher:{
+                Toast.makeText(this, "For Teacher", Toast.LENGTH_SHORT).show();
+                getSupportActionBar().setTitle("Teacher");
+                item.setChecked(true);
+                mDrawerLayout.closeDrawers();
+            }
+            break;
+            case R.id.routine:{
+                Toast.makeText(this, "For Routine", Toast.LENGTH_SHORT).show();
+                getSupportActionBar().setTitle("Routine");
+                item.setChecked(true);
+                mDrawerLayout.closeDrawers();
+            }
+            break;
 
-        if(id==R.id.counselling){
-            Toast.makeText(this, "For counselling", Toast.LENGTH_SHORT).show();
+
         }
-        if(id==R.id.notification){
-            Toast.makeText(this, "For Notification", Toast.LENGTH_SHORT).show();
-        }
-        if(id==R.id.team){
-            Toast.makeText(this, "For Team", Toast.LENGTH_SHORT).show();
-        }
-        if(id==R.id.course){
-            Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
-        }
-        if(id==R.id.student){
-            Toast.makeText(this, "For Student", Toast.LENGTH_SHORT).show();
-        }
-        if(id==R.id.teacher){
-            Toast.makeText(this, "For Teacher", Toast.LENGTH_SHORT).show();
-        }
-        if(id==R.id.routine){
-            Toast.makeText(this, "For Routine", Toast.LENGTH_SHORT).show();
-        }
+
         return false;
     }
 }
