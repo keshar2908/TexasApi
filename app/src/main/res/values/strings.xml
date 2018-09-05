@@ -7,4 +7,8 @@
     <string name="keshar">keshar</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+
+
+    <string name="login_preference">kesharpaudel.texasapi_login_preference</string>
+    <string name="login_status_preference">kesharpaudel.texasapi_login_status_preference</string>
 </resources>
