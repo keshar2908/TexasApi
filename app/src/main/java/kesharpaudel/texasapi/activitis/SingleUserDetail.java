@@ -23,9 +23,12 @@ public class SingleUserDetail extends AppCompatActivity {
 
         ProfilePicture=findViewById(R.id.profilepicture);
         Username=findViewById(R.id.username);
-        Firstname=findViewById(R.id.fn);
-        Lastname=findViewById(R.id.ln);
+        Firstname=findViewById(R.id.firstname);
+        Lastname=findViewById(R.id.lastname);
         Email=findViewById(R.id.email);
+        Createby=findViewById(R.id.createdby);
+        CreatedDate=findViewById(R.id.creatededate);
+        MobileNo=findViewById(R.id.mobileno);
 
 
         String pp=getIntent().getStringExtra("profilepicture");

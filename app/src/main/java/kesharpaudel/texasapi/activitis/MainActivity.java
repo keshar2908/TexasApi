@@ -16,6 +16,7 @@ import kesharpaudel.texasapi.api.RetrofitClient;
 import kesharpaudel.texasapi.models.Login;
 import kesharpaudel.texasapi.models.User;
 import kesharpaudel.texasapi.models.UserDto;
+import kesharpaudel.texasapi.sharedpreference.SharedPreferenceConfig;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Call;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     public void userLogin() {
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
         //-----------for email validation------------//
 
-       /* if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        /*if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
 
             mUsername.setError("Enter a valid email.");
             mUsername.requestFocus();
@@ -78,11 +80,12 @@ public class MainActivity extends AppCompatActivity {
             mPassword.requestFocus();
             return;
         }
-        if (password.length() <2) {
+        if (password.length() < 2) {
             mPassword.setError("Password should be at least 6 character long.");
             mPassword.requestFocus();
             return;
         }
+
 
         Login login = new Login(password, username);
 
@@ -97,20 +100,22 @@ public class MainActivity extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
 
+
                     UserDto user = response.body();
 
 
-                    String token=user.getUser().getToken();
-                    long loginid=user.getUser().getLoginId();
-                    long customerid=user.getUser().getCustomerId();
+                    String token = user.getUser().getToken();
+                    long loginid = user.getUser().getLoginId();
+                    long customerid = user.getUser().getCustomerId();
 
-                    Intent intent=new Intent(MainActivity.this,UserDetail.class);
+                    Intent intent = new Intent(MainActivity.this, UserDetail.class);
 
 
-                    intent.putExtra("loginid",loginid);
-                    intent.putExtra("token",token);
-                    intent.putExtra("customerid",customerid);
+                    intent.putExtra("loginid", loginid);
+                    intent.putExtra("token", token);
+                    intent.putExtra("customerid", customerid);
                     startActivity(intent);
+
 
                     //Toast.makeText(MainActivity.this, user.getUser().getFirstName(), Toast.LENGTH_SHORT).show();
                     //Toast.makeText(MainActivity.this, user.getUser().getToken(), Toast.LENGTH_SHORT).show();
@@ -137,4 +142,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 }
