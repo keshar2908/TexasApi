@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".activitis.UserDetail" />
         <activity android:name=".activitis.SingleUserDetail"></activity>
+        <activity android:name=".activitis.studentDetails" />
     </application>
 
 </manifest>

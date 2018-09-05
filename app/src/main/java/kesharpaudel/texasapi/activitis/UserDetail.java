@@ -1,5 +1,6 @@
 package kesharpaudel.texasapi.activitis;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -131,6 +132,11 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
         }
         if(id==R.id.student){
             Toast.makeText(this, "For Student", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(UserDetail.this, studentDetails.class);
+            intent.putExtra("loginid",loginId);
+            intent.putExtra("token",token);
+            intent.putExtra("customerid",customerId);
+            startActivity(intent);
         }
         if(id==R.id.teacher){
             Toast.makeText(this, "For Teacher", Toast.LENGTH_SHORT).show();
