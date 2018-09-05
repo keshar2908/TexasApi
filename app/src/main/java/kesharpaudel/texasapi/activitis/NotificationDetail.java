@@ -38,23 +38,14 @@ public class NotificationDetail extends AppCompatActivity {
 
 
 
-        mDrawerLayout=findViewById(R.id.drawerlayout);
-        mToggle=new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
-        mDrawerLayout.addDrawerListener(mToggle);
-        mToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        NavigationView navigationView=findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) NotificationDetail.this);
-
-        mDrawerLayout.addDrawerListener(mToggle);
-        mToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        Intent intent =getIntent();
-        token = intent.getExtras().getString("token");
-        loginId = intent.getExtras().getLong("loginId");
-        customerId = intent.getExtras().getLong("customerId");
+
+
+
+        token=getIntent().getExtras().getString("token");
+        loginId=getIntent().getExtras().getLong("loginid");
+        customerId=getIntent().getExtras().getLong("customerid");
 
         layoutManager=new LinearLayoutManager(this);
         recyclerView.setHasFixedSize(true);
@@ -74,9 +65,15 @@ public class NotificationDetail extends AppCompatActivity {
         call.enqueue(new Callback<Notification>() {
             @Override
             public void onResponse(Call<Notification> call, Response<Notification> response) {
+                Toast.makeText(NotificationDetail.this, token, Toast.LENGTH_SHORT).show();
+                Toast.makeText(NotificationDetail.this, String.valueOf(loginId), Toast.LENGTH_SHORT).show();
+                Toast.makeText(NotificationDetail.this, String.valueOf(customerId), Toast.LENGTH_SHORT).show();
                 if (response.isSuccessful()) {
                     NotificationAdapter adapter = new NotificationAdapter(response.body().getData(),NotificationDetail.this);
                     recyclerView.setAdapter(adapter);
+                }
+                else {
+                    Toast.makeText(NotificationDetail.this, "No response", Toast.LENGTH_SHORT).show();
                 }
             }
 
