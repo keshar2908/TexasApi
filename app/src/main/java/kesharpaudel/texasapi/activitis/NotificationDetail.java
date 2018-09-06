@@ -148,8 +148,7 @@ public class NotificationDetail extends AppCompatActivity implements NavigationV
             intent.putExtra("token",token);
             intent.putExtra("customerid",customerId);
             startActivity(intent);
-            item.setChecked(true);
-            mDrawerLayout.closeDrawers();
+
         }
         return false;
     }
