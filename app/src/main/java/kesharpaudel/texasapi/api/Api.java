@@ -10,6 +10,7 @@ import kesharpaudel.texasapi.models.ListStudent;
 import kesharpaudel.texasapi.models.ListDto;
 import kesharpaudel.texasapi.models.Login;
 import kesharpaudel.texasapi.models.Notification;
+import kesharpaudel.texasapi.models.Teacher;
 import kesharpaudel.texasapi.models.User;
 import kesharpaudel.texasapi.models.UserDto;
 import retrofit2.Call;
@@ -37,5 +38,9 @@ public interface Api {
 
     @GET("courses")
     Call<List<Course>> courseList(@Header("customerId") long customerId, @Header("token") String token,@Header("userId") long loginId);
+
+    @GET("teachers?page=0&size=20&sort=firstName%2Cdesc")
+    Call<Teacher> teacherList(@Header("loginId") long loginId, @Header("customerId") long customerId,
+                              @Header("token") String token);
 
 }

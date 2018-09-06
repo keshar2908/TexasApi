@@ -92,6 +92,8 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
         });
 
 
+
+
     }
 
     @Override
@@ -124,30 +126,17 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
             Toast.makeText(this, "For Team", Toast.LENGTH_SHORT).show();
         }
 
-        if(id==R.id.course) {
-            //Intent intent = new Intent(this, CourseActivity.class);
-            //intent.putExtra("loginid", loginId);
-            //intent.putExtra("token", token);
-            //intent.putExtra("customerid", customerId);
-            //startActivity(intent);
-            Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
-        }
-        if (id == R.id.course) {
-            Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
 
-        }
+
 
             if (id == R.id.course) {
-                //Intent intent = new Intent(this, CourseActivity.class);
-                //intent.putExtra("loginid", loginId);
-                //intent.putExtra("token", token);
-                //intent.putExtra("customerid", customerId);
-                //startActivity(intent);
-                Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, CourseActivity.class);
+                intent.putExtra("loginid", loginId);
+                intent.putExtra("token", token);
+                intent.putExtra("customerid", customerId);
+                startActivity(intent);
+                //Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
 
-            }
-            if (id == R.id.course) {
-                Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
 
             }
             if (id == R.id.student) {
@@ -159,7 +148,12 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
                 startActivity(intent);
             }
             if (id == R.id.teacher) {
-                Toast.makeText(this, "For Teacher", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "For Teacher", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(UserDetail.this,TeacherDetail.class);
+                intent.putExtra("loginId", loginId);
+                intent.putExtra("token", token);
+                intent.putExtra("customerId", customerId);
+                startActivity(intent);
             }
             if (id == R.id.routine) {
                 Toast.makeText(this, "For Routine", Toast.LENGTH_SHORT).show();
