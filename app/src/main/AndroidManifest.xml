@@ -19,9 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activitis.UserDetail" />
-        <activity android:name=".activitis.SingleUserDetail"></activity>
-        <activity android:name=".activitis.NotificationDetail"></activity>
-        <activity android:name=".activitis.studentDetails"></activity>
+        <activity android:name=".activitis.SingleUserDetail" />
+        <activity android:name=".activitis.NotificationDetail" />
+        <activity android:name=".activitis.studentDetails" />
+        <activity android:name=".activitis.CourseActivity"></activity>
     </application>
 
 </manifest>

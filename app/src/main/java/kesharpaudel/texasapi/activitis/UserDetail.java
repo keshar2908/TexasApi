@@ -134,7 +134,12 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
             Toast.makeText(this, "For Team", Toast.LENGTH_SHORT).show();
         }
         if(id==R.id.course){
-            Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this,CourseActivity.class);
+            intent.putExtra("loginid",loginId);
+            intent.putExtra("token",token);
+            intent.putExtra("customerid",customerId);
+            startActivity(intent);
+            //Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
         }
         if(id==R.id.student){
             Toast.makeText(this, "For Student", Toast.LENGTH_SHORT).show();

@@ -1,6 +1,9 @@
 package kesharpaudel.texasapi.api;
 
+import java.util.List;
+
 import kesharpaudel.texasapi.activitis.ListStudent;
+import kesharpaudel.texasapi.models.Course;
 import kesharpaudel.texasapi.models.ListDto;
 import kesharpaudel.texasapi.models.Login;
 import kesharpaudel.texasapi.models.Notification;
@@ -28,5 +31,8 @@ public interface Api {
 
     @GET("students?page=0&size=23&sort=firstName%2Cdesc")
     Call<ListStudent> studentList(@Header("customerId") long customerId, @Header("token") String token, @Header("loginId") String loginId);
+
+    @GET("courses")
+    Call<List<Course>> courseList(@Header("customerId") long customerId, @Header("token") String token,@Header("userId") long loginId);
 
 }
