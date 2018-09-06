@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import kesharpaudel.texasapi.R;
-import kesharpaudel.texasapi.activitis.Datum;
+import kesharpaudel.texasapi.models.Datum;
 
 public class listAdapter extends RecyclerView.Adapter<listAdapter.ViewHolder> {
 
