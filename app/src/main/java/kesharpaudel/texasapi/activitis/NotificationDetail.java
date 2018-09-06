@@ -37,12 +37,13 @@ public class NotificationDetail extends AppCompatActivity implements NavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_detail);
+        getSupportActionBar().setTitle("Notification");
         recyclerView = findViewById(R.id.recyclerview);
 
         mDrawerLayout=findViewById(R.id.drawerlayout);
         mToggle=new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
 
-        getSupportActionBar().setTitle("Notification");
+
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

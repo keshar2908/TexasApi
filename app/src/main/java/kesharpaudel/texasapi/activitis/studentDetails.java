@@ -36,7 +36,7 @@ public class studentDetails extends AppCompatActivity implements NavigationView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_detail);
-        getSupportActionBar().setTitle("Student Details");
+        getSupportActionBar().setTitle("Students");
         recyclerView=findViewById(R.id.recyclerview);
         token=getIntent().getExtras().getString("token");
         loginId=getIntent().getExtras().getLong("loginid");

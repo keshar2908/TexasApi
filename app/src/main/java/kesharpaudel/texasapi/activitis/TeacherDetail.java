@@ -35,8 +35,10 @@ public class TeacherDetail extends AppCompatActivity implements NavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_detail);
+        getSupportActionBar().setTitle("Teachers");
 
         recyclerView = findViewById(R.id.recyclerview);
+
 
         token = getIntent().getExtras().getString("token");
         customerId = getIntent().getExtras().getLong("customerId");
