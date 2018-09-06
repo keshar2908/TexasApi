@@ -147,10 +147,17 @@ public class studentDetails extends AppCompatActivity implements NavigationView.
             mDrawerLayout.closeDrawers();
         }
         if (id == R.id.team) {
-            Toast.makeText(this, "For Team", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Team", Toast.LENGTH_SHORT).show();
         }
         if (id == R.id.course) {
-            Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, CourseActivity.class);
+            intent.putExtra("loginid", loginId);
+            intent.putExtra("token", token);
+            intent.putExtra("customerid", customerId);
+            startActivity(intent);
+            Toast.makeText(this, "Course", Toast.LENGTH_SHORT).show();
+            item.setChecked(true);
+            mDrawerLayout.closeDrawers();
         }
         if (id == R.id.student) {
             Toast.makeText(this, "Student", Toast.LENGTH_SHORT).show();
@@ -159,10 +166,18 @@ public class studentDetails extends AppCompatActivity implements NavigationView.
 
         }
         if (id == R.id.teacher) {
-            Toast.makeText(this, "For Teacher", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this,TeacherDetail.class);
+            intent.putExtra("loginId", loginId);
+            intent.putExtra("token", token);
+            intent.putExtra("customerId", customerId);
+            startActivity(intent);
+
+            Toast.makeText(this, "Teacher", Toast.LENGTH_SHORT).show();
+            item.setChecked(true);
+            mDrawerLayout.closeDrawers();
         }
         if (id == R.id.routine) {
-            Toast.makeText(this, "For Routine", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, " Routine", Toast.LENGTH_SHORT).show();
         }
         if (id == R.id.user) {
             Toast.makeText(this, "User", Toast.LENGTH_SHORT).show();

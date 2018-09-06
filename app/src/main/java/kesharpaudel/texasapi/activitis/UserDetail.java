@@ -111,19 +111,24 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
         int id = item.getItemId();
 
         if (id == R.id.counselling) {
-            Toast.makeText(this, "For counselling", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "counselling", Toast.LENGTH_SHORT).show();
+            item.setChecked(true);
+            mDrawerLayout.closeDrawers();
         }
         if (id == R.id.notification) {
-            Toast.makeText(this, "For Notification", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, " Notification", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(UserDetail.this, NotificationDetail.class);
             intent.putExtra("loginid", loginId);
             intent.putExtra("token", token);
             intent.putExtra("customerid", customerId);
             startActivity(intent);
             item.setChecked(true);
+            mDrawerLayout.closeDrawers();
         }
         if (id == R.id.team) {
-            Toast.makeText(this, "For Team", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Team", Toast.LENGTH_SHORT).show();
+            item.setChecked(true);
+            mDrawerLayout.closeDrawers();
         }
 
 
@@ -139,24 +144,47 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
 
 
             }
+
+        if(id==R.id.course) {
+            Intent intent = new Intent(this, CourseActivity.class);
+            intent.putExtra("loginid", loginId);
+            intent.putExtra("token", token);
+            intent.putExtra("customerid", customerId);
+            startActivity(intent);
+            Toast.makeText(this, "Course", Toast.LENGTH_SHORT).show();
+            item.setChecked(true);
+            mDrawerLayout.closeDrawers();
+        }
+
+
             if (id == R.id.student) {
-                Toast.makeText(this, "For Student", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, " Student", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(UserDetail.this, studentDetails.class);
                 intent.putExtra("loginid", loginId);
                 intent.putExtra("token", token);
                 intent.putExtra("customerid", customerId);
                 startActivity(intent);
+                item.setChecked(true);
+                mDrawerLayout.closeDrawers();
             }
             if (id == R.id.teacher) {
+
                 //Toast.makeText(this, "For Teacher", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(UserDetail.this,TeacherDetail.class);
                 intent.putExtra("loginId", loginId);
                 intent.putExtra("token", token);
                 intent.putExtra("customerId", customerId);
                 startActivity(intent);
+
+                Toast.makeText(this, "Teacher", Toast.LENGTH_SHORT).show();
+                item.setChecked(true);
+                mDrawerLayout.closeDrawers();
+
             }
             if (id == R.id.routine) {
-                Toast.makeText(this, "For Routine", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Routine", Toast.LENGTH_SHORT).show();
+                item.setChecked(true);
+                mDrawerLayout.closeDrawers();
             }
             if (id == R.id.user) {
                 Toast.makeText(this, "User", Toast.LENGTH_SHORT).show();
