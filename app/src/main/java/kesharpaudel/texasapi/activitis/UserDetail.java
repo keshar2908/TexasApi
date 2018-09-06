@@ -23,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UserDetail extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class UserDetail extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -33,60 +33,51 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
     private ActionBarDrawerToggle mToggle;
 
     String token;
-    long loginId,customerId;
-
-
-
-
+    long loginId, customerId;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_detail);
+        getSupportActionBar().setTitle("User");
 
-        recyclerView=findViewById(R.id.recyclerview);
-        token=getIntent().getExtras().getString("token");
-        loginId=getIntent().getExtras().getLong("loginid");
-        customerId=getIntent().getExtras().getLong("customerid");
+        recyclerView = findViewById(R.id.recyclerview);
+        token = getIntent().getExtras().getString("token");
+        loginId = getIntent().getExtras().getLong("loginid");
+        customerId = getIntent().getExtras().getLong("customerid");
 
 
-
-
-        layoutManager=new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
-
-        mDrawerLayout=findViewById(R.id.drawerlayout);
-        mToggle=new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
+        mDrawerLayout = findViewById(R.id.drawerlayout);
+        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
 
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        showUserDetail();
 
-        NavigationView navigationView=findViewById(R.id.navigation_view);
+        NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
+        showUserDetail();
 
     }
 
     private void showUserDetail() {
 
 
-
-        Call<ListDto> call= RetrofitClient.getInstance()
-                .getApi().userlist(loginId,customerId,token);
+        Call<ListDto> call = RetrofitClient.getInstance()
+                .getApi().userlist(loginId, customerId, token);
 
         call.enqueue(new Callback<ListDto>() {
             @Override
             public void onResponse(Call<ListDto> call, Response<ListDto> response) {
 
-                adapter=new RecyclerAdapter(response.body().getData(),UserDetail.this);
+                adapter = new RecyclerAdapter(response.body().getData(), UserDetail.this);
 
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     recyclerView.setAdapter(adapter);
 
                 }
@@ -101,14 +92,12 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
         });
 
 
-
-
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(mToggle.onOptionsItemSelected(item)){
+        if (mToggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -117,44 +106,70 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        int id=item.getItemId();
+        int id = item.getItemId();
 
-        if(id==R.id.counselling){
+        if (id == R.id.counselling) {
             Toast.makeText(this, "For counselling", Toast.LENGTH_SHORT).show();
         }
-        if(id==R.id.notification){
+        if (id == R.id.notification) {
             Toast.makeText(this, "For Notification", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(UserDetail.this, NotificationDetail.class);
-            intent.putExtra("loginid",loginId);
-            intent.putExtra("token",token);
-            intent.putExtra("customerid",customerId);
+            intent.putExtra("loginid", loginId);
+            intent.putExtra("token", token);
+            intent.putExtra("customerid", customerId);
             startActivity(intent);
+            item.setChecked(true);
         }
-        if(id==R.id.team){
+        if (id == R.id.team) {
             Toast.makeText(this, "For Team", Toast.LENGTH_SHORT).show();
         }
-        if(id==R.id.course){
-            Intent intent = new Intent(this,CourseActivity.class);
-            intent.putExtra("loginid",loginId);
-            intent.putExtra("token",token);
-            intent.putExtra("customerid",customerId);
-            startActivity(intent);
-            //Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
+
+        if(id==R.id.course) {
+            //Intent intent = new Intent(this, CourseActivity.class);
+            //intent.putExtra("loginid", loginId);
+            //intent.putExtra("token", token);
+            //intent.putExtra("customerid", customerId);
+            //startActivity(intent);
+            Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
         }
-        if(id==R.id.student){
-            Toast.makeText(this, "For Student", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(UserDetail.this, studentDetails.class);
-            intent.putExtra("loginid",loginId);
-            intent.putExtra("token",token);
-            intent.putExtra("customerid",customerId);
-            startActivity(intent);
+        if (id == R.id.course) {
+            Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
+
         }
-        if(id==R.id.teacher){
-            Toast.makeText(this, "For Teacher", Toast.LENGTH_SHORT).show();
+
+            if (id == R.id.course) {
+                //Intent intent = new Intent(this, CourseActivity.class);
+                //intent.putExtra("loginid", loginId);
+                //intent.putExtra("token", token);
+                //intent.putExtra("customerid", customerId);
+                //startActivity(intent);
+                Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
+
+            }
+            if (id == R.id.course) {
+                Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
+
+            }
+            if (id == R.id.student) {
+                Toast.makeText(this, "For Student", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(UserDetail.this, studentDetails.class);
+                intent.putExtra("loginid", loginId);
+                intent.putExtra("token", token);
+                intent.putExtra("customerid", customerId);
+                startActivity(intent);
+            }
+            if (id == R.id.teacher) {
+                Toast.makeText(this, "For Teacher", Toast.LENGTH_SHORT).show();
+            }
+            if (id == R.id.routine) {
+                Toast.makeText(this, "For Routine", Toast.LENGTH_SHORT).show();
+            }
+            if (id == R.id.user) {
+                Toast.makeText(this, "User", Toast.LENGTH_SHORT).show();
+                item.setChecked(true);
+                mDrawerLayout.closeDrawers();
+            }
+            return false;
         }
-        if(id==R.id.routine){
-            Toast.makeText(this, "For Routine", Toast.LENGTH_SHORT).show();
-        }
-        return false;
-    }
+
 }

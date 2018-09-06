@@ -1,6 +1,7 @@
 package kesharpaudel.texasapi.activitis;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 
@@ -21,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NotificationDetail extends AppCompatActivity {
+public class NotificationDetail extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -35,6 +37,16 @@ public class NotificationDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_detail);
         recyclerView = findViewById(R.id.recyclerview);
+
+        mDrawerLayout=findViewById(R.id.drawerlayout);
+        mToggle=new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
+
+        getSupportActionBar().setTitle("Notification");
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        NavigationView navigationView=findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
 
 
@@ -65,10 +77,12 @@ public class NotificationDetail extends AppCompatActivity {
         call.enqueue(new Callback<Notification>() {
             @Override
             public void onResponse(Call<Notification> call, Response<Notification> response) {
-                Toast.makeText(NotificationDetail.this, token, Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(NotificationDetail.this, token, Toast.LENGTH_SHORT).show();
                 Toast.makeText(NotificationDetail.this, String.valueOf(loginId), Toast.LENGTH_SHORT).show();
                 Toast.makeText(NotificationDetail.this, String.valueOf(customerId), Toast.LENGTH_SHORT).show();
+                */
                 if (response.isSuccessful()) {
+
                     NotificationAdapter adapter = new NotificationAdapter(response.body().getData(),NotificationDetail.this);
                     recyclerView.setAdapter(adapter);
                 }
@@ -84,5 +98,58 @@ public class NotificationDetail extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(mToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        int id=item.getItemId();
+
+        if(id==R.id.counselling){
+            Toast.makeText(this, "For counselling", Toast.LENGTH_SHORT).show();
+        }
+        if(id==R.id.notification){
+            Toast.makeText(this, "Notification", Toast.LENGTH_SHORT).show();
+            item.setChecked(true);
+            mDrawerLayout.closeDrawers();
+        }
+        if(id==R.id.team){
+            Toast.makeText(this, "For Team", Toast.LENGTH_SHORT).show();
+        }
+        if(id==R.id.course){
+            Toast.makeText(this, "For Course", Toast.LENGTH_SHORT).show();
+        }
+        if(id==R.id.student){
+            Toast.makeText(this, "For Student", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(NotificationDetail.this, studentDetails.class);
+            intent.putExtra("loginid",loginId);
+            intent.putExtra("token",token);
+            intent.putExtra("customerid",customerId);
+            startActivity(intent);
+        }
+        if(id==R.id.teacher){
+            Toast.makeText(this, "For Teacher", Toast.LENGTH_SHORT).show();
+        }
+        if(id==R.id.routine){
+            Toast.makeText(this, "For Routine", Toast.LENGTH_SHORT).show();
+        }
+        if(id==R.id.user){
+            Toast.makeText(this, "User", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(NotificationDetail.this, UserDetail.class);
+            intent.putExtra("loginid",loginId);
+            intent.putExtra("token",token);
+            intent.putExtra("customerid",customerId);
+            startActivity(intent);
+
+        }
+        return false;
     }
 }

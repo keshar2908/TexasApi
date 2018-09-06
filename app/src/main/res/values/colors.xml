@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#e28936</color>
+    <color name="colorPrimary">#2e397c</color>
     <color name="colorPrimaryDark">#080b33</color>
-    <color name="colorAccent">#d42183</color>
+    <color name="colorAccent">#ffffff</color>
     <color name="colorBlack">#000000</color>
 
     <color name="titlecolor">#ffffff</color>
     <color name="username">#1a20d2</color>
+
+    <color name="Blue">#2e397c</color>
+    <color name="navigationview">#2333A7</color>
+    <color name="pink">#eb0b8c</color>
 </resources>
+

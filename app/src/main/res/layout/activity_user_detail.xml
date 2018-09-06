@@ -28,8 +28,10 @@
         app:menu="@menu/navigation_menu"
         android:layout_gravity="start"
         android:id="@+id/navigation_view"
-        android:background="@color/colorAccent"
+        android:background="@color/navigationview"
         app:headerLayout="@layout/nevigation_header"
+        app:itemTextColor="#ffffff"
+        app:itemIconPadding="12dp"
         >
 
     </android.support.design.widget.NavigationView>
