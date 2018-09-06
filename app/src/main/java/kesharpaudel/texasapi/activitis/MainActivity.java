@@ -1,6 +1,9 @@
 package kesharpaudel.texasapi.activitis;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -20,6 +23,8 @@ import kesharpaudel.texasapi.sharedpreference.SharedPreferenceConfig;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Call;
+
+import static kesharpaudel.texasapi.R.color.pink;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,9 +46,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         mLogin.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-
                 userLogin();
                 //Toast.makeText(MainActivity.this, "I don't know Api. please tech us.", Toast.LENGTH_SHORT).show();
 
@@ -80,11 +86,11 @@ public class MainActivity extends AppCompatActivity {
             mPassword.requestFocus();
             return;
         }
-        if (password.length() < 2) {
+        /*if (password.length() < 2) {
             mPassword.setError("Password should be at least 6 character long.");
             mPassword.requestFocus();
             return;
-        }
+        }*/
 
 
         Login login = new Login(password, username);
