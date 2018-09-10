@@ -23,7 +23,8 @@
         <activity android:name=".activitis.NotificationDetail" />
         <activity android:name=".activitis.studentDetails" />
         <activity android:name=".activitis.CourseActivity" />
-        <activity android:name=".activitis.TeacherDetail"></activity>
+        <activity android:name=".activitis.TeacherDetail" />
+        <activity android:name=".activitis.teamActivity"></activity>
     </application>
 
 </manifest>
