@@ -130,13 +130,21 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             lastname = data.getLastName();
             username = data.getUsername();
             //email = data.getEmail();
-
-
             Firstname.setText(firstname);
             Lastname.setText(lastname);
             Username.setText(username);
 
             }
+
+
+
+            }
+    public void addPaging(List<Data> datalist){
+
+        for (Data data1 : datalist){
+
+            data.add(data1);
+        }
 
 
     }

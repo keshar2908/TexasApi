@@ -46,9 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         mLogin.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @SuppressLint("ResourceAsColor")
-            @Override
             public void onClick(View view) {
                 userLogin();
                 //Toast.makeText(MainActivity.this, "I don't know Api. please tech us.", Toast.LENGTH_SHORT).show();
@@ -57,6 +54,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(SharedPreferenceConfig.getInstance(MainActivity.this).isLogedIn()){
+
+            Intent intent=new Intent(MainActivity.this,UserDetail.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+
+        }
     }
 
     public void userLogin() {
@@ -102,25 +112,25 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<UserDto>() {
             @Override
             public void onResponse(Call<UserDto> call, Response<UserDto> response) {
+                UserDto user = response.body();
 
 
                 if (response.isSuccessful()) {
 
+                    SharedPreferenceConfig.getInstance(MainActivity.this)
+                            .saveUser(response.body().getUser());
 
-                    UserDto user = response.body();
-
-
-                    String token = user.getUser().getToken();
+                    Intent intent=new Intent(MainActivity.this,UserDetail.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    /*String token = user.getUser().getToken();
                     long loginid = user.getUser().getLoginId();
                     long customerid = user.getUser().getCustomerId();
-
                     Intent intent = new Intent(MainActivity.this, UserDetail.class);
-
-
                     intent.putExtra("loginid", loginid);
                     intent.putExtra("token", token);
                     intent.putExtra("customerid", customerid);
-                    startActivity(intent);
+                    startActivity(intent);*/
 
 
                     //Toast.makeText(MainActivity.this, user.getUser().getFirstName(), Toast.LENGTH_SHORT).show();
@@ -141,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<UserDto> call, Throwable t) {
 
 
-                Toast.makeText(MainActivity.this, "Username and Password is mismatch.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Server Response is failed.", Toast.LENGTH_SHORT).show();
 
 
             }

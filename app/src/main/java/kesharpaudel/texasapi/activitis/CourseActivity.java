@@ -37,6 +37,7 @@ public class CourseActivity extends AppCompatActivity implements NavigationView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_detail);
+        getSupportActionBar().setTitle("Course");
 
         recyclerView = findViewById(R.id.recyclerview);
         layoutManager=new LinearLayoutManager(this);
@@ -109,6 +110,11 @@ public class CourseActivity extends AppCompatActivity implements NavigationView.
         }
         if (id == R.id.team) {
             Toast.makeText(this, "Team", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, teamActivity.class);
+            intent.putExtra("loginid", loginId);
+            intent.putExtra("token", token);
+            intent.putExtra("customerid", customerId);
+            startActivity(intent);
             item.setChecked(true);
             mDrawerLayout.closeDrawers();
         }

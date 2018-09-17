@@ -117,6 +117,11 @@ public class TeacherDetail extends AppCompatActivity implements NavigationView.O
         }
         if (id == R.id.team) {
             Toast.makeText(this, "Team", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, teamActivity.class);
+            intent.putExtra("loginid", loginId);
+            intent.putExtra("token", token);
+            intent.putExtra("customerid", customerId);
+            startActivity(intent);
             item.setChecked(true);
             mDrawerLayout.closeDrawers();
         }

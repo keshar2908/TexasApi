@@ -25,6 +25,7 @@
         <activity android:name=".activitis.CourseActivity" />
         <activity android:name=".activitis.TeacherDetail" />
         <activity android:name=".activitis.teamActivity"></activity>
+        <activity android:name=".activitis.TeacherDetail" />
     </application>
 
 </manifest>

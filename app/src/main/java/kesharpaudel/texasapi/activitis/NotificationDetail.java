@@ -127,17 +127,21 @@ public class NotificationDetail extends AppCompatActivity implements NavigationV
         }
         if(id==R.id.team){
             Toast.makeText(this, "Team", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, teamActivity.class);
+            intent.putExtra("loginid", loginId);
+            intent.putExtra("token", token);
+            intent.putExtra("customerid", customerId);
+            startActivity(intent);
             item.setChecked(true);
             mDrawerLayout.closeDrawers();
         }
         if(id==R.id.course){
-            Intent intent = new Intent(this,CourseActivity.class);
-            intent.putExtra("loginId", loginId);
+            Intent intent = new Intent(this, CourseActivity.class);
+            intent.putExtra("loginid", loginId);
             intent.putExtra("token", token);
-            intent.putExtra("customerId", customerId);
+            intent.putExtra("customerid", customerId);
             startActivity(intent);
-
-            Toast.makeText(this, "Teacher", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Course", Toast.LENGTH_SHORT).show();
             item.setChecked(true);
             mDrawerLayout.closeDrawers();
         }

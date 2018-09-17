@@ -7,23 +7,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import kesharpaudel.texasapi.R;
-import kesharpaudel.texasapi.adapter.RecyclerAdapter;
-import kesharpaudel.texasapi.adapter.listAdapter;
 import kesharpaudel.texasapi.adapter.teamAdapter;
 import kesharpaudel.texasapi.api.RetrofitClient;
-import kesharpaudel.texasapi.models.Content;
-import kesharpaudel.texasapi.models.ListStudent;
 import kesharpaudel.texasapi.models.teamDto;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class teamActivity extends AppCompatActivity {
+public class teamActivity extends AppCompatActivity{
     RecyclerView recyclerView;
     String token;
     long loginId, customerId;
@@ -36,6 +28,7 @@ public class teamActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team);
+        getSupportActionBar().setTitle("Team");
         recyclerView = findViewById(R.id.recyclerview);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -95,6 +88,8 @@ b6.setOnClickListener(new View.OnClickListener() {
          showteamList6();
      }
  });
+
+
 
 
 
@@ -244,5 +239,6 @@ b6.setOnClickListener(new View.OnClickListener() {
             }
         });
     }
+
 }
 
