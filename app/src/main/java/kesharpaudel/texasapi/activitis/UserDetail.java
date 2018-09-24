@@ -53,7 +53,7 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
         getSupportActionBar().setTitle("User");
 
         recyclerView = findViewById(R.id.recyclerview);
-        progressBar = findViewById(R.id.progressbar);
+
         token=SharedPreferenceConfig.getInstance(this).getUser().getToken();
         loginId=SharedPreferenceConfig.getInstance(this).getUser().getLoginId();
         customerId=SharedPreferenceConfig.getInstance(this).getUser().getCustomerId();
@@ -93,7 +93,7 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
 
     private void showUserDetail() {
 
-        progressBar.setVisibility(View.VISIBLE);
+   //     progressBar.setVisibility(View.VISIBLE);
 
 
         Call<ListDto> call = RetrofitClient.getInstance()
@@ -110,7 +110,7 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
                 if (response.isSuccessful()) {
                     recyclerView.setAdapter(adapter);
 
-                    progressBar.setVisibility(View.GONE);
+                    //progressBar.setVisibility(View.GONE);
 
                 }
 
@@ -204,37 +204,25 @@ public class UserDetail extends AppCompatActivity implements NavigationView.OnNa
             item.setChecked(true);
             mDrawerLayout.closeDrawers();
 
-        }
-        if (id == R.id.routine) {
-            Toast.makeText(this, "Routine", Toast.LENGTH_SHORT).show();
-            item.setChecked(true);
-            mDrawerLayout.closeDrawers();
-        }
-        if (id == R.id.user) {
-            Toast.makeText(this, "User", Toast.LENGTH_SHORT).show();
-            item.setChecked(true);
-            mDrawerLayout.closeDrawers();
-        }
-        return false;
-    }
-
-    private void performPagination() {
-
-        Call<ListDto> call = RetrofitClient.getInstance()
-                .getApi().userlist(loginId, customerId, token);
-
-        call.enqueue(new Callback<ListDto>() {
-            @Override
-            public void onResponse(Call<ListDto> call, Response<ListDto> response) {
-
-
             }
-
-            @Override
-            public void onFailure(Call<ListDto> call, Throwable t) {
-
+            if (id == R.id.routine) {
+                Toast.makeText(this, "Routine", Toast.LENGTH_SHORT).show();
+                item.setChecked(true);
+                mDrawerLayout.closeDrawers();
+                Intent intent = new Intent(this,RoutineActivity.class);
+                startActivity(intent);
             }
-        });
+            if (id == R.id.user) {
+                Toast.makeText(this, "User", Toast.LENGTH_SHORT).show();
+                item.setChecked(true);
+                mDrawerLayout.closeDrawers();
+            }
+            return false;
+        }
 
-    }
+
+
+
+
+
 }

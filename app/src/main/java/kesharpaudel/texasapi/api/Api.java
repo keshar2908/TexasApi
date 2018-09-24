@@ -5,6 +5,7 @@ import java.util.List;
 
 import kesharpaudel.texasapi.models.Course;
 
+import kesharpaudel.texasapi.models.RoutineResponseDto;
 import kesharpaudel.texasapi.models.ListStudent;
 
 import kesharpaudel.texasapi.models.ListDto;
@@ -19,6 +20,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
+import retrofit2.http.Path;
 
 public interface Api {
 
@@ -66,5 +68,9 @@ public interface Api {
 
 
 
+
+
+    @GET("routines/courses/{courseId}/routines")
+    Call<RoutineResponseDto>routineList(@Header("loginId") long loginId , @Header("customerId") long customerId , @Path("courseId") long courseId, @Header("token") String token);
 
 }

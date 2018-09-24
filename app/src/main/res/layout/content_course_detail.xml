@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activitis.CourseDetail"
+    tools:showIn="@layout/activity_course_detail">
+
+
+    <TextView
+        android:id="@+id/nameID"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/descriptionID"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="Description" />
+
+    <TextView
+        android:id="@+id/affiliationID"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="Affiliation" />
+
+    <TextView
+        android:id="@+id/durationID"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="Duration" />
+
+    <TextView
+        android:id="@+id/createdByID"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="Created By" />
+
+
+    <TextView
+        android:id="@+id/createdDateID"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="Created Date" />
+
+
+</LinearLayout>

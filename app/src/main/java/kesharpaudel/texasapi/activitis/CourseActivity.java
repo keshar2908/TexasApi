@@ -36,7 +36,7 @@ public class CourseActivity extends AppCompatActivity implements NavigationView.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_detail);
+        setContentView(R.layout.course_recycle);
         getSupportActionBar().setTitle("Course");
 
         recyclerView = findViewById(R.id.recyclerview);

@@ -12,4 +12,5 @@
     <string name="login_preference">kesharpaudel.texasapi_login_preference</string>
     <string name="login_status_preference">kesharpaudel.texasapi_login_status_preference</string>
     <string name="sign_in">sign in</string>
+    <string name="title_activity_course_detail">CourseDetail</string>
 </resources>

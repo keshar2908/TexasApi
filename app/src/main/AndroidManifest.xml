@@ -24,8 +24,16 @@
         <activity android:name=".activitis.studentDetails" />
         <activity android:name=".activitis.CourseActivity" />
         <activity android:name=".activitis.TeacherDetail" />
-        <activity android:name=".activitis.teamActivity"></activity>
+        <activity android:name=".activitis.teamActivity" />
         <activity android:name=".activitis.TeacherDetail" />
+        <activity android:name=".activitis.RoutineActivity" />
+        <activity android:name=".activitis.ShowNotificationDetail" />
+        <activity android:name=".activitis.teamActivity" />
+        <activity android:name=".activitis.TeacherDetail" />
+        <activity
+            android:name=".activitis.CourseDetail"
+            android:label="@string/title_activity_course_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

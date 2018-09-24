@@ -1,7 +1,9 @@
 package kesharpaudel.texasapi.activitis;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,6 +13,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 
@@ -36,7 +39,7 @@ public class NotificationDetail extends AppCompatActivity implements NavigationV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_detail);
+        setContentView(R.layout.notify_recycle);
         getSupportActionBar().setTitle("Notification");
         recyclerView = findViewById(R.id.recyclerview);
 
@@ -69,6 +72,10 @@ public class NotificationDetail extends AppCompatActivity implements NavigationV
 
 
 
+
+
+
+
     }
 
     private void showNotification() {
@@ -87,6 +94,12 @@ public class NotificationDetail extends AppCompatActivity implements NavigationV
 
                     NotificationAdapter adapter = new NotificationAdapter(response.body().getData(),NotificationDetail.this);
                     recyclerView.setAdapter(adapter);
+
+
+
+                    
+
+
                 }
                 else {
                     Toast.makeText(NotificationDetail.this, "No response", Toast.LENGTH_SHORT).show();
@@ -101,6 +114,12 @@ public class NotificationDetail extends AppCompatActivity implements NavigationV
             }
         });
     }
+
+
+
+
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
