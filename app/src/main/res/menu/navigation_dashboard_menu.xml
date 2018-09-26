@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/dashboard"
+            android:icon="@drawable/counseling"
+
+            android:title="Dashboard"/>
+
+
+        <item android:id="@+id/news"
+            android:icon="@drawable/notification"
+            android:title="News"/>
+        <item android:id="@+id/routine"
+            android:icon="@drawable/group"
+            android:title="Class Routine"/>
+        <item android:id="@+id/contact"
+            android:icon="@drawable/user"
+            android:title="Contact"/>
+        <item android:id="@+id/about"
+            android:icon="@drawable/course"
+            android:title="About"/>
+        <item android:id="@+id/logout"
+            android:icon="@drawable/student1"
+            android:title="Logout"/>
+
+    </group>
+
+</menu>
