@@ -9,8 +9,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.ResourceBundle;
 
 import kesharpaudel.texasapi.R;
+import kesharpaudel.texasapi.activitis.RoutineActivity;
 import kesharpaudel.texasapi.models.Routine;
 import kesharpaudel.texasapi.models.SemesterRoutineResponse;
 
@@ -23,6 +25,8 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.ViewHold
         this.routineList = routineList;
         this.mContext = mContext;
     }
+
+
 
 
     @NonNull
@@ -45,7 +49,7 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.ViewHold
         return routineList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView time, sunday;
 

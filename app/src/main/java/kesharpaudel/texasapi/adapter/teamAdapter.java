@@ -7,14 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
 import kesharpaudel.texasapi.R;
 import kesharpaudel.texasapi.models.Content;
-import kesharpaudel.texasapi.models.Datum;
-import kesharpaudel.texasapi.models.teamDto;
+import kesharpaudel.texasapi.models.SemesterRoutineResponse;
 
 public class teamAdapter extends RecyclerView.Adapter<teamAdapter.ViewHolder> {
 

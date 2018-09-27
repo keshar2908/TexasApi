@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import kesharpaudel.texasapi.R;
@@ -24,22 +25,21 @@ public class RoutineActivity extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     String token;
     long loginId,customerId, courseId;
-
+    RecyclerView.Adapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_detail);
+        setContentView(R.layout.activity_routine);
 
         recyclerView = findViewById(R.id.recyclerview);
 
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
         token = "bUZW7EshOxs17pgjnJi9CkvJPkJCvwshDpoqqBhqDVfJyI9M20" ;
         loginId = 921;
         customerId = 1;
         courseId = 40;
 
-        layoutManager=new LinearLayoutManager(this);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(layoutManager);
 
         showCourses();
 
@@ -54,15 +54,25 @@ public class RoutineActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<RoutineResponseDto> call, Response<RoutineResponseDto> response) {
                 if (response.isSuccessful()) {
-                    List<SemesterRoutineResponse> srrs = response.body().getSemesterRoutineResponse();
-                    for(SemesterRoutineResponse srr : srrs){
-                        System.out.println("Semester:"+srr.getSemester());
-                        List<Routine> routines = srr.getRoutines();
-                        System.out.println(routines);
-                        //RoutineAdapter adapter = new RoutineAdapter(,this);
+
+                    RoutineResponseDto res = response.body();
+                    List<SemesterRoutineResponse> semesterRoutineResponseList = res.getSemesterRoutineResponse();
+                    if(semesterRoutineResponseList != null){
+
+                        for(SemesterRoutineResponse semesterRoutineResponse : semesterRoutineResponseList){
+                            String semester = semesterRoutineResponse.getSemester();
+                            List<Routine> routineList = semesterRoutineResponse.getRoutines();
+                            adapter = new RoutineAdapter(routineList, RoutineActivity.this);
+                            recyclerView.setAdapter(adapter);
+                            if(routineList != null){
+                                for(Routine routine: routineList){
+
+                                }
+                            }
+                        }
                     }
 
-                    Toast.makeText(RoutineActivity.this, "Success.", Toast.LENGTH_SHORT).show();
+
 
                 }else{
                     Toast.makeText(RoutineActivity.this, "Response failure.", Toast.LENGTH_SHORT).show();
